@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crystal Field Theory — Class 12 Interactive</title>
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel:#0f1620;
+      --card:#121b27;
+      --ink:#e6eef8;
+      --muted:#a9b3c1;
+      --accent:#6aa7ff;
+      --accent-2:#9dffb0;
+      --danger:#ff7d7d;
+      --ok:#76e0a6;
+      --border: #1f2a38;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html, body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"}
+    a{color:var(--accent)}
+    .wrap{display:grid;grid-template-columns: 320px 1fr;gap:18px;max-width:1200px;margin:0 auto;padding:24px}
+    @media (max-width: 980px){.wrap{grid-template-columns:1fr}}
+    header{grid-column:1/-1;background:linear-gradient(135deg,#122033,#0d1623);border:1px solid var(--border);padding:20px 18px;border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    h1{margin:0 0 6px 0;font-size:clamp(22px,3.6vw,34px);letter-spacing:0.2px}
+    header p{margin:6px 0 0 0;color:var(--muted)}
+    .head-text{display:flex;flex-direction:column}
+
+    /* TOC / Nav (desktop default) */
+    nav.toc{position:sticky;top:16px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px}
+    nav.toc h3{margin:0 0 10px 0;font-size:15px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.08em}
+    nav.toc a{display:block;padding:8px 10px;border-radius:8px;color:var(--ink);text-decoration:none;border:1px solid transparent}
+    nav.toc a:hover{background:#0d1a29;border-color:#16314d}
+    nav.toc .sub{margin-left:10px}
+    .toc-close{display:none}
+
+    /* Drawer behaviour for mobile */
+    @media (max-width:980px){
+      body.toc-open{overflow:hidden}
+      nav.toc{position:fixed;top:0;left:0;bottom:0;width:86%;max-width:340px;z-index:60;background:var(--panel);border-right:1px solid var(--border);border-radius:0 16px 16px 0;padding:18px 16px;transform:translateX(-110%);transition:transform .25s ease}
+      body.toc-open nav.toc{transform:none}
+      .scrim{display:none}
+      body.toc-open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:50}
+      .toc-close{display:inline-flex;align-items:center;justify-content:center;position:absolute;right:10px;top:10px;background:#13243a;border:1px solid #2a3b55;color:#eaf2ff;border-radius:10px;padding:6px 10px;cursor:pointer}
+    }
+
+    main{display:grid;gap:18px}
+    section{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px}
+    section h2{margin:0 0 10px 0;font-size:22px}
+    .muted{color:var(--muted)}
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:860px){.grid-2{grid-template-columns:1fr}}
+    .highlight{background:rgba(106,167,255,0.1);border:1px dashed #2a4166;color:#cfe2ff;padding:10px;border-radius:10px}
+
+    .series{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px;margin-top:12px}
+    .series span{display:block;text-align:center;padding:8px 6px;border-radius:10px;background:#101a28;border:1px solid #1f2f46;color:#d6e6ff;font-size:13px}
+    .series span.small{font-size:12px;color:#b5c4d9}
+
+    .diagram{display:flex;gap:16px;align-items:flex-end;justify-content:center;padding:16px;border:1px solid var(--border);border-radius:12px;background:#0e1723}
+    .level{position:relative;width:130px;height:180px;border-left:1px solid #314257;border-bottom:1px solid #314257;padding-bottom:8px}
+    .lvl-line{position:absolute;left:18px;right:12px;height:2px;background:#2f5f9e;border-radius:2px}
+    .lvl-line.upper{background:#5f9e2f}
+    .lvl-label{position:absolute;left:0;top:-20px;color:#bcd2ef;font-size:13px}
+
+    .calc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width: 980px){.calc{grid-template-columns:1fr}}
+    .controls{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    label{display:block;font-size:14px;color:#cfd8e5;margin:10px 0 6px}
+    select,input{width:100%;padding:10px;background:#0f1927;color:#e7f1ff;border:1px solid #253a57;border-radius:10px}
+    .radio-row{display:flex;gap:8px;flex-wrap:wrap}
+    .radio-row label{margin:0;padding:8px 10px;background:#0f1927;border:1px solid #253a57;border-radius:10px;cursor:pointer}
+    .radio-row input{width:auto}
+    button{padding:10px 12px;border-radius:10px;border:1px solid #2a3b55;background:#13243a;color:#eaf2ff;cursor:pointer}
+    button.primary{background:#17345a;border-color:#2d5b9c}
+    .toc-btn{padding:10px 12px;border-radius:10px;border:1px solid #2a3b55;background:#13243a;color:#eaf2ff;cursor:pointer}
+    .out{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .out h3{margin:0 0 8px 0}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .kpi div{background:#0e1a29;border:1px solid #21324a;border-radius:10px;padding:10px}
+    .kpi b{display:block;font-size:13px;color:#b7c9e2}
+    .kpi span{font-size:18px}
+    .note{font-size:13px;color:#a9b8ce}
+    .flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .badge{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid #294362;background:#102136;color:#cfe2ff}
+    .expr{padding:10px;border-radius:10px;background:#0b1626;border:1px dashed #2a4166}
+    .small{font-size:13px;color:#a8b5c9}
+    .hr{height:1px;background:#1a283c;margin:10px 0;border:0}
+  </style>
+</head>
+<body>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+  <div class="wrap">
+    <header>
+      <div class="head-text">
+        <h1>Crystal Field Theory (CFT) — Class 12</h1>
+        <p>Clear explanations, key ideas, and an interactive CFSE &amp; spin-state calculator.</p>
+      </div>
+      <button id="tocToggle" class="toc-btn" aria-controls="toc" aria-expanded="false" aria-label="Toggle table of contents">☰ Contents</button>
+    </header>
+
+    <nav id="toc" class="toc" aria-label="On this page">
+      <button id="tocClose" class="toc-close" aria-label="Close table of contents">✕</button>
+      <h3>Contents</h3>
+      <a href="#idea">1. Core Idea</a>
+      <a href="#splitting">2. d-Orbital Splitting</a>
+      <a class="sub" href="#oct">Octahedral (t<sub>2g</sub> &amp; e<sub>g</sub>)</a>
+      <a class="sub" href="#tet">Tetrahedral (e &amp; t<sub>2</sub>)</a>
+      <a href="#delta">3. Crystal Field Splitting Energy (Δ)</a>
+      <a href="#spin">4. High-spin vs Low-spin</a>
+      <a href="#series">5. Spectrochemical Series</a>
+      <a href="#calculator">6. CFSE &amp; Spin-State Calculator</a>
+      <a href="#examples">7. Worked Example</a>
+      <a href="#color">8. Colour of Complexes</a>
+    </nav>
+
+    <main>
+      <section id="idea">
+        <h2>1) Core Idea</h2>
+        <div class="grid-2">
+          <div class="card">
+            <p><b>Crystal Field Theory (CFT)</b> explains properties of metal complexes by treating ligands as point charges (or dipoles) that create an electric field around the central metal ion. This field <b>lifts the degeneracy</b> (equal energy) of the five d-orbitals → they split into groups with different energies.</p>
+            <div class="highlight">CFT ignores covalent bonding. It is an <b>electrostatic model</b>, but it predicts magnetic behaviour, colour, and relative stabilities effectively for Class 12.</div>
+          </div>
+          <div class="card">
+            <ul>
+              <li>Metal–ligand repulsions strongest where d-orbital lobes point directly at ligands.</li>
+              <li>This raises the energy of those orbitals more than others → <b>energy splitting</b>.</li>
+              <li>Electron arrangement across split levels determines: <i>CFSE</i>, number of unpaired electrons, and magnetic moment.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="splitting">
+        <h2>2) d‑Orbital Splitting</h2>
+        <div class="grid-2">
+          <div id="oct" class="card">
+            <h3>Octahedral field: t<sub>2g</sub> (lower), e<sub>g</sub> (upper)</h3>
+            <p class="muted">Ligands approach along the axes. d<sub>z²</sub> and d<sub>x²−y²</sub> point at ligands → more repulsion → higher energy (e<sub>g</sub>). The other three are lower (t<sub>2g</sub>).</p>
+            <div class="diagram" id="diag-octa"></div>
+            <div class="small">Energy change per electron: t<sub>2g</sub> = −0.4Δ<sub>o</sub>, e<sub>g</sub> = +0.6Δ<sub>o</sub>.</div>
+          </div>
+          <div id="tet" class="card">
+            <h3>Tetrahedral field: e (lower), t<sub>2</sub> (upper)</h3>
+            <p class="muted">Ligands approach between axes. d<sub>xy</sub>, d<sub>yz</sub>, d<sub>xz</sub> are now higher (t<sub>2</sub>) and the other two are lower (e).</p>
+            <div class="diagram" id="diag-tetra"></div>
+            <div class="small">Energy change per electron: e = −0.6Δ<sub>t</sub>, t<sub>2</sub> = +0.4Δ<sub>t</sub>.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="delta">
+        <h2>3) Crystal Field Splitting Energy (Δ)</h2>
+        <p><b>Δ</b> is the energy gap between the two sets of d-levels. Notation: Δ<sub>o</sub> (octahedral) and Δ<sub>t</sub> (tetrahedral). Approximate relation: <b>Δ<sub>t</sub> ≈ 4/9 Δ<sub>o</b>.</p>
+        <p>Magnitude of Δ depends on:
+          <span class="badge">Ligand type (spectrochemical series)</span>
+          <span class="badge">Metal ion &amp; oxidation state</span>
+          <span class="badge">Geometry</span>
+        </p>
+      </section>
+
+      <section id="spin">
+        <h2>4) High‑spin vs Low‑spin</h2>
+        <div class="grid-2">
+          <div class="card">
+            <p><b>Pairing energy (P)</b> is the energy required to pair two electrons in the same orbital. Electron arrangement follows two opposing ideas:</p>
+            <ul>
+              <li><b>Hund’s rule</b>: keep electrons unpaired in different orbitals (maximises spin).</li>
+              <li><b>Minimise energy</b>: if Δ is large enough, pairing in the lower set can be cheaper than promotion to the higher set.</li>
+            </ul>
+            <div class="highlight"><b>Decision rule:</b> if Δ &lt; P → <b>high‑spin</b> (more unpaired). If Δ &gt; P → <b>low‑spin</b> (fewer unpaired).</div>
+          </div>
+          <div class="card">
+            <p class="mono expr">CFSE = (electrons in lower set × lower factor + electrons in upper set × upper factor) × Δ</p>
+            <p class="small">Octahedral factors: lower −0.4, upper +0.6. Tetrahedral: lower −0.6, upper +0.4. <br/>Total energy also includes pairing: <span class="mono">+ (number of pairs) × P</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="series">
+        <h2>5) Spectrochemical Series (Weak → Strong field)</h2>
+        <div class="series" aria-label="Spectrochemical series">
+          <span>I<sup>−</sup></span>
+          <span>Br<sup>−</sup></span>
+          <span class="small">SCN<sup>−</sup> (S‑)</span>
+          <span>Cl<sup>−</sup></span>
+          <span>F<sup>−</sup></span>
+          <span>OH<sup>−</sup></span>
+          <span>H<sub>2</sub>O</span>
+          <span class="small">NCS<sup>−</sup> (N‑)</span>
+          <span>NH<sub>3</sub></span>
+          <span>en</span>
+          <span>NO<sub>2</sub><sup>−</sup></span>
+          <span>CN<sup>−</sup>/CO</span>
+        </div>
+        <p class="small">Right side ligands generally give larger Δ and favour low‑spin in octahedral complexes (when possible).</p>
+      </section>
+
+      <section id="calculator">
+        <h2>6) CFSE &amp; Spin‑State Calculator</h2>
+        <div class="calc">
+          <div class="controls" aria-label="Calculator controls">
+            <label for="geom">Geometry</label>
+            <select id="geom">
+              <option value="oct">Octahedral (Δo)</option>
+              <option value="tet">Tetrahedral (Δt)</option>
+            </select>
+
+            <label for="dn">d‑electron count (d<sup>n</sup>)</label>
+            <select id="dn"></select>
+
+            <label>Spin selection</label>
+            <div class="radio-row" role="radiogroup" aria-label="Spin selection">
+              <label><input type="radio" name="spin" value="auto" checked> Auto (compare Δ and P)</label>
+              <label><input type="radio" name="spin" value="high"> Force High‑spin</label>
+              <label><input type="radio" name="spin" value="low"> Force Low‑spin</label>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label for="delta">Δ value (optional, same units as P)</label>
+                <input id="delta" type="number" placeholder="e.g., 15000" />
+              </div>
+              <div>
+                <label for="pair">Pairing energy P (optional)</label>
+                <input id="pair" type="number" placeholder="e.g., 20000" />
+              </div>
+            </div>
+            <p class="note">If Δ or P is left blank in <b>Auto</b> mode, results for both high‑ and low‑spin will be shown side‑by‑side.</p>
+            <div class="flex">
+              <button class="primary" id="run">Calculate</button>
+              <button id="reset">Reset</button>
+            </div>
+          </div>
+
+          <div class="out" id="results" aria-live="polite">
+            <h3>Results</h3>
+            <p class="muted">Set inputs and press <b>Calculate</b> to see CFSE, electron arrangement, and magnetic moment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="examples">
+        <h2>7) Worked Example (Octahedral d<sup>6</sup>)</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Weak field (Δ<sub>o</sub> &lt; P) → High‑spin</h3>
+            <p>Arrangement: t<sub>2g</sub><sup>4</sup> e<sub>g</sub><sup>2</sup> with <b>4 unpaired</b>. CFSE = (4 × −0.4 + 2 × +0.6)Δ<sub>o</sub> = (−1.6 + 1.2)Δ<sub>o</sub> = <b>−0.4Δ<sub>o</sub></b>.</p>
+          </div>
+          <div class="card">
+            <h3>Strong field (Δ<sub>o</sub> &gt; P) → Low‑spin</h3>
+            <p>Arrangement: t<sub>2g</sub><sup>6</sup> e<sub>g</sub><sup>0</sup> with <b>0 unpaired</b>. CFSE = 6 × −0.4Δ<sub>o</sub> = <b>−2.4Δ<sub>o</sub></b>. Pairing cost = 3P (three pairs).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="color">
+        <h2>8) Colour of Complexes (one‑line idea)</h2>
+        <p>When light is absorbed to promote d‑electrons across the gap (Δ), the <i>complementary colour</i> of the absorbed light is observed. Larger Δ → absorbs higher‑energy (bluer) light → appears towards yellow/orange/red.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Populate d^n selector
+    const dnSel = document.getElementById('dn');
+    for(let i=0;i<=10;i++){ const o=document.createElement('option'); o.value=String(i); o.innerHTML=`d<sup>${i}</sup>`; dnSel.appendChild(o); }
+
+    // Simple energy-level diagrams (static)
+    function drawDiagram(containerId, lowerLabel, upperLabel){
+      const c = document.getElementById(containerId);
+      c.innerHTML = '';
+      const level = document.createElement('div'); level.className='level';
+      // upper lines
+      const up1 = document.createElement('div'); up1.className='lvl-line upper'; up1.style.top='28px';
+      const up2 = document.createElement('div'); up2.className='lvl-line upper'; up2.style.top='60px';
+      // lower lines
+      const lo1 = document.createElement('div'); lo1.className='lvl-line'; lo1.style.bottom='60px';
+      const lo2 = document.createElement('div'); lo2.className='lvl-line'; lo2.style.bottom='28px';
+      // labels
+      const labU = document.createElement('div'); labU.className='lvl-label'; labU.style.left='18px'; labU.style.top='8px'; labU.innerHTML = upperLabel;
+      const labL = document.createElement('div'); labL.className='lvl-label'; labL.style.left='18px'; labL.style.bottom='90px'; labL.innerHTML = lowerLabel;
+      level.appendChild(up1); level.appendChild(up2); level.appendChild(lo1); level.appendChild(lo2); level.appendChild(labU); level.appendChild(labL);
+      c.appendChild(level);
+    }
+    drawDiagram('diag-octa','t₂g (lower)','e₍g₎ (upper)');
+    drawDiagram('diag-tetra','e (lower)','t₂ (upper)');
+
+    // Core calculator
+    const results = document.getElementById('results');
+    const geomSel = document.getElementById('geom');
+    const deltaInput = document.getElementById('delta');
+    const pairInput = document.getElementById('pair');
+
+    function factors(geom){
+      if(geom==='oct') return {lowerName:'t₂g', upperName:'e_g', lowerFactor:-0.4, upperFactor:0.6, lowerOrbitals:3, upperOrbitals:2, deltaSymbol:'Δₒ'}; // Δo
+      return {lowerName:'e', upperName:'t₂', lowerFactor:-0.6, upperFactor:0.4, lowerOrbitals:2, upperOrbitals:3, deltaSymbol:'Δₜ'}; // Δt
+    }
+
+    function fill_high(n, f){
+      const low = new Array(f.lowerOrbitals).fill(0);
+      const up  = new Array(f.upperOrbitals).fill(0);
+      let left = n;
+      // Stage 1: singly in lower
+      for(let i=0;i<low.length && left>0;i++){ low[i] = 1; left--; }
+      // Stage 2: singly in upper
+      for(let i=0;i<up.length && left>0;i++){ up[i] = 1; left--; }
+      // Stage 3: pair in lower
+      for(let i=0;i<low.length && left>0;i++){ if(low[i]===1){ low[i]=2; left--; } }
+      // Stage 4: pair in upper
+      for(let i=0;i<up.length && left>0;i++){ if(up[i]===1){ up[i]=2; left--; } }
+      return {low, up};
+    }
+
+    function fill_low(n, f){
+      const low = new Array(f.lowerOrbitals).fill(0);
+      const up  = new Array(f.upperOrbitals).fill(0);
+      let left = n;
+      // Fill lower fully (pairing allowed) before any promotion
+      for(let pass=0; pass<2 && left>0; pass++){
+        for(let i=0;i<low.length && left>0;i++){
+          if((pass===0 && low[i]===0) || (pass===1 && low[i]===1)) { low[i]++; left--; }
+        }
+      }
+      // Then fill upper similarly
+      for(let pass=0; pass<2 && left>0; pass++){
+        for(let i=0;i<up.length && left>0;i++){
+          if((pass===0 && up[i]===0) || (pass===1 && up[i]===1)) { up[i]++; left--; }
+        }
+      }
+      return {low, up};
+    }
+
+    function incremental_cost(occ, energyPerElectron, P){
+      if(occ>=2) return Infinity; // cannot add
+      if(occ===0) return energyPerElectron;
+      return energyPerElectron + (P ?? 0);
+    }
+
+    function fill_auto(n, f, Δ, P){
+      const low = new Array(f.lowerOrbitals).fill(0);
+      const up  = new Array(f.upperOrbitals).fill(0);
+      for(let e=0; e<n; e++){
+        let best = {set:'low', idx:0, cost:Infinity};
+        for(let i=0;i<low.length;i++){
+          const c = incremental_cost(low[i], f.lowerFactor*(Δ ?? 1), P);
+          if(c < best.cost){ best={set:'low', idx:i, cost:c}; }
+        }
+        for(let i=0;i<up.length;i++){
+          const c = incremental_cost(up[i], f.upperFactor*(Δ ?? 1), P);
+          if(c < best.cost){ best={set:'up', idx:i, cost:c}; }
+        }
+        if(best.set==='low') low[best.idx]++; else up[best.idx]++;
+      }
+      return {low, up};
+    }
+
+    function count_pairs(arr){ return arr.reduce((s,x)=> s + (x===2?1:0), 0); }
+    function count_unpaired(arr){ return arr.reduce((s,x)=> s + (x===1?1:0), 0); }
+    function sum_electrons(arr){ return arr.reduce((s,x)=> s + x, 0); }
+
+    function cfse_report(occ, f, Δ){
+      const nL = sum_electrons(occ.low);
+      const nU = sum_electrons(occ.up);
+      const coeff = nL*f.lowerFactor + nU*f.upperFactor; // coefficient of Δ
+      let line = `CFSE = (${nL} × ${f.lowerFactor.toFixed(1)} + ${nU} × ${f.upperFactor.toFixed(1)}) ${f.deltaSymbol} = ${(nL*f.lowerFactor).toFixed(1)} + ${(nU*f.upperFactor).toFixed(1)} ${f.deltaSymbol} = <b>${coeff.toFixed(1)}${f.deltaSymbol}</b>`;
+      if(Δ){ line += ` ≈ <b>${(coeff*Δ).toFixed(0)}</b> (same units as Δ)`; }
+      return {coeff, html: line};
+    }
+
+    function total_energy(coeff, pairs, Δ, P){
+      if(Δ && P){ return coeff*Δ + pairs*P; }
+      return null;
+    }
+
+    function config_string(occ, f){
+      const sLow = occ.low.map(x => x===0? '—' : (x===1? '↑' : '↑↓')).join(' | ');
+      const sUp  = occ.up .map(x => x===0? '—' : (x===1? '↑' : '↑↓')).join(' | ');
+      return `${f.lowerName}: [ ${sLow} ]  \n${f.upperName}: [ ${sUp} ]`;
+    }
+
+    function mu_spin_only(n_unp){
+      return Math.sqrt(n_unp*(n_unp+2));
+    }
+
+    function card_for(title, occ, f, Δ, P){
+      const nPairs = count_pairs(occ.low) + count_pairs(occ.up);
+      const nUnp = count_unpaired(occ.low) + count_unpaired(occ.up);
+      const cfse = cfse_report(occ, f, Δ);
+      const Etot = total_energy(cfse.coeff, nPairs, Δ, P);
+      const mu = mu_spin_only(nUnp);
+      return `
+        <div class="card">
+          <h3>${title}</h3>
+          <div class="kpi">
+            <div><b>Unpaired (n)</b><span>${nUnp}</span></div>
+            <div><b>Pairs</b><span>${nPairs}</span></div>
+            <div><b>Spin‑only μ (B.M.)</b><span>${mu.toFixed(2)}</span></div>
+            <div><b>Electrons</b><span>${sum_electrons(occ.low)+sum_electrons(occ.up)}</span></div>
+          </div>
+          <div class="hr"></div>
+          <p class="mono">${config_string(occ, f).replaceAll('\n','<br/>')}</p>
+          <p class="mono expr">${cfse.html}</p>
+          ${Etot!==null ? `<p class="small">Including pairing: Total ≈ <b>${Etot.toFixed(0)}</b> (CFSE + ${nPairs}P)</p>` : `<p class="small">Provide both Δ and P to see a numeric total including pairing.</p>`}
+        </div>`;
+    }
+
+    function handleCalc(){
+      const geom = geomSel.value; const f = factors(geom);
+      const n = parseInt(dnSel.value,10);
+      const Δ = deltaInput.value ? Number(deltaInput.value) : null;
+      const P = pairInput.value ? Number(pairInput.value) : null;
+      const spin = document.querySelector('input[name="spin"]:checked').value;
+
+      results.innerHTML = '<h3>Results</h3>';
+
+      if(spin==='high'){
+        const occ = fill_high(n,f);
+        results.innerHTML += card_for('High‑spin (forced)', occ, f, Δ, P);
+        return;
+      }
+      if(spin==='low'){
+        const occ = fill_low(n,f);
+        results.innerHTML += card_for('Low‑spin (forced)', occ, f, Δ, P);
+        return;
+      }
+
+      // Auto mode
+      if(Δ && P){
+        const occ = fill_auto(n,f,Δ,P);
+        const title = ( (Δ < P) ? 'Auto: High‑spin (Δ < P)' : 'Auto: Low‑spin (Δ ≥ P)' );
+        results.innerHTML += card_for(title, occ, f, Δ, P);
+      } else {
+        // Show both scenarios to teach the concept
+        const occH = fill_high(n,f);
+        const occL = fill_low(n,f);
+        results.innerHTML += `<div class="grid-2">${card_for('Assume High‑spin (Δ < P)', occH, f, Δ, P)}${card_for('Assume Low‑spin (Δ > P)', occL, f, Δ, P)}</div>`;
+        results.innerHTML += '<p class="note">Tip: Enter estimated Δ and P (any consistent units) and choose <b>Auto</b> to see which arrangement is energetically favoured.</p>';
+      }
+    }
+
+    document.getElementById('run').addEventListener('click', handleCalc);
+    document.getElementById('reset').addEventListener('click', ()=>{
+      geomSel.value='oct'; dnSel.value='0'; deltaInput.value=''; pairInput.value='';
+      document.querySelector('input[name="spin"][value="auto"]').checked = true;
+      results.innerHTML = '<h3>Results</h3><p class="muted">Set inputs and press <b>Calculate</b> to see CFSE, electron arrangement, and magnetic moment.</p>';
+    });
+
+    // Defaults for quick demo
+    dnSel.value='6';
+
+    // ===== TOC Drawer logic =====
+    const toc = document.getElementById('toc');
+    const tocToggle = document.getElementById('tocToggle');
+    const tocClose = document.getElementById('tocClose');
+    const scrim = document.getElementById('scrim');
+    const mqMobile = window.matchMedia('(max-width: 980px)');
+
+    function openToc(){
+      document.body.classList.add('toc-open');
+      tocToggle.setAttribute('aria-expanded','true');
+      // focus first link
+      const first = toc.querySelector('a');
+      if(first){ setTimeout(()=> first.focus(), 120); }
+    }
+    function closeToc(returnFocus=true){
+      document.body.classList.remove('toc-open');
+      tocToggle.setAttribute('aria-expanded','false');
+      if(returnFocus) tocToggle.focus();
+    }
+
+    tocToggle.addEventListener('click', ()=>{
+      if(document.body.classList.contains('toc-open')) closeToc(false); else openToc();
+    });
+    tocClose.addEventListener('click', ()=> closeToc());
+    scrim.addEventListener('click', ()=> closeToc());
+
+    // Close on ESC
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape' && document.body.classList.contains('toc-open')) closeToc();
+    });
+
+    // Auto-hide after selecting a TOC link (mobile only)
+    toc.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        if(mqMobile.matches){
+          // let the browser navigate to the anchor, then close
+          setTimeout(()=> closeToc(false), 50);
+        }
+      });
+    });
+
+    // If window is resized to desktop, ensure drawer state is reset
+    mqMobile.addEventListener('change', (e)=>{
+      if(!e.matches){ closeToc(false); }
+    });
+  </script>
+</body>
+</html>
