@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17704841843"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17704841843');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9514124564034105"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Chemistry? - College Chemistry Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .menu-toggle:hover {
+            background: #2a5298;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #1e3c72;
+            color: white;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-280px);
+        }
+
+        /* Collapse/Expand Button */
+        .collapse-btn {
+            position: fixed;
+            left: 250px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 15px 8px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            z-index: 1001;
+            transition: left 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .collapse-btn:hover {
+            background: #2a5298;
+        }
+
+        .sidebar.collapsed + .collapse-btn {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #152a52;
+            border-bottom: 2px solid #2a5298;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+            color: white;
+        }
+
+        /* Search Box */
+        .search-box {
+            padding: 15px;
+            background: #152a52;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .search-box input:focus {
+            outline: 2px solid #667eea;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            border-bottom: 1px solid #2a5298;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: #2a5298;
+        }
+
+        .nav-item.active {
+            background: #667eea;
+            font-weight: bold;
+        }
+
+        /* Collapsible Sections */
+        .nav-section {
+            cursor: pointer;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .nav-section:hover {
+            background: #2a5298;
+        }
+
+        .nav-section .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-section.expanded .arrow {
+            transform: rotate(90deg);
+        }
+
+        .nav-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #152a52;
+        }
+
+        .nav-submenu.show {
+            max-height: 500px;
+        }
+
+        .nav-submenu li {
+            border-bottom: 1px solid #1e3c72;
+        }
+
+        .nav-submenu .nav-item {
+            padding-left: 40px;
+            font-size: 0.9em;
+        }
+
+        .nav-submenu .nav-submenu .nav-item {
+            padding-left: 60px;
+            font-size: 0.85em;
+        }
+
+        /* Main Content Area */
+        .main-wrapper {
+            margin-left: 280px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-wrapper.expanded {
+            margin-left: 0;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .collapse-btn {
+                display: none;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar.collapsed {
+                transform: translateX(-100%);
+            }
+
+            .main-wrapper {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .intro {
+            background: #f8f9fa;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .intro h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .branch-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .branch-card h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .concept-list {
+            background: #e3f2fd;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .concept-list ul {
+            list-style: none;
+        }
+
+        .concept-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .concept-list li:before {
+            content: "⚛";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #1e3c72;
+        }
+
+        .applications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .app-item {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .app-item h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3436;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Menu Button (Mobile) -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Chemistry Guide</h3>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search topics..." onkeyup="searchTopics()">
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="index.html" class="nav-item active">🏠 What is Chemistry?</a>
+            </li>
+
+            <li>
+                <div class="nav-section" onclick="toggleSection('inorganic')">
+                    <span>⚗️ Inorganic Chemistry</span>
+                    <span class="arrow">▶</span>
+                </div>
+                <ul class="nav-submenu" id="inorganic">
+                    <li>
+                        <div class="nav-section" onclick="toggleSection('coordination')">
+                            <span>Coordination Chemistry</span>
+                            <span class="arrow">▶</span>
+                        </div>
+                        <ul class="nav-submenu" id="coordination">
+                            <li><a href="coordination-compounds.html" class="nav-item">📚 Coordination Compounds</a></li>
+                            <li>
+                                <div class="nav-section" onclick="toggleSection('theories')">
+                                    <span>Bonding Theories</span>
+                                    <span class="arrow">▶</span>
+                                </div>
+                                <ul class="nav-submenu" id="theories">
+                                    <li><a href="vbt-theory.html" class="nav-item">VBT - Valence Bond Theory</a></li>
+                                    <li><a href="cft-theory.html" class="nav-item">CFT - Crystal Field Theory</a></li>
+                                    <li><a href="mot-theory.html" class="nav-item">MOT - Molecular Orbital Theory</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Collapse/Expand Button -->
+    <button class="collapse-btn" id="collapseBtn" onclick="toggleCollapse()">◀</button>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper" id="mainWrapper">
+        <div class="container">
+            <header>
+                <h1>What is Chemistry?</h1>
+                <p>The Central Science Explained for College Students</p>
+            </header>
+
+            <div class="content">
+            <div class="intro">
+                <h2>Definition</h2>
+                <p><strong>Chemistry</strong> is the scientific study of matter, its properties, composition, structure, and the changes it undergoes during chemical reactions. It explores the behavior of atoms and molecules and how they interact to form everything in the universe.</p>
+            </div>
+
+            <section>
+                <h2>Why Chemistry is Called the "Central Science"</h2>
+                <p>Chemistry bridges the gap between physics and biology, connecting the fundamental laws of physics with the complex processes of living organisms. It provides the molecular-level understanding necessary for:</p>
+                <ul style="margin: 15px 0 15px 40px;">
+                    <li>Understanding biological processes (biochemistry)</li>
+                    <li>Developing new materials (materials science)</li>
+                    <li>Advancing medical treatments (pharmaceutical chemistry)</li>
+                    <li>Addressing environmental challenges (environmental chemistry)</li>
+                    <li>Producing energy sustainably (energy chemistry)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Major Branches of Chemistry</h2>
+                <div class="branch-grid">
+                    <div class="branch-card">
+                        <h3>Organic Chemistry</h3>
+                        <p>Studies carbon-based compounds and their reactions. Essential for understanding life, pharmaceuticals, plastics, and fuels.</p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Inorganic Chemistry</h3>
+                        <p>Focuses on non-carbon compounds including metals, minerals, and coordination complexes. Critical for catalysis and materials.</p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Physical Chemistry</h3>
+                        <p>Combines chemistry with physics to study energy changes, thermodynamics, kinetics, and quantum mechanics of chemical systems.</p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Analytical Chemistry</h3>
+                        <p>Develops methods to identify, separate, and quantify matter. Uses techniques like spectroscopy, chromatography, and mass spectrometry.</p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Biochemistry</h3>
+                        <p>Explores chemical processes within living organisms, including metabolism, DNA replication, and protein synthesis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Fundamental Concepts</h2>
+                <div class="concept-list">
+                    <ul>
+                        <li><strong>Atoms and Elements:</strong> Atoms are the basic building blocks of matter. Elements are pure substances made of one type of atom.</li>
+                        <li><strong>Chemical Bonds:</strong> Atoms connect through ionic, covalent, or metallic bonds to form molecules and compounds.</li>
+                        <li><strong>Chemical Reactions:</strong> Processes that rearrange atoms to create new substances with different properties.</li>
+                        <li><strong>The Periodic Table:</strong> Organizes elements by atomic structure and reveals patterns in chemical behavior.</li>
+                        <li><strong>Stoichiometry:</strong> Quantitative relationships between reactants and products in chemical reactions.</li>
+                        <li><strong>Thermodynamics:</strong> Energy changes in chemical processes; determines reaction spontaneity.</li>
+                        <li><strong>Kinetics:</strong> Study of reaction rates and the factors that influence them.</li>
+                        <li><strong>Equilibrium:</strong> The state where forward and reverse reactions occur at equal rates.</li>
+                        <li><strong>Acid-Base Chemistry:</strong> Proton transfer reactions and pH concepts.</li>
+                        <li><strong>Electrochemistry:</strong> Relationship between chemical reactions and electrical energy.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                "Chemistry is not just about mixing chemicals in a lab—it's about understanding the molecular world around us and using that knowledge to solve real-world problems."
+            </div>
+
+            <section>
+                <h2>Real-World Applications</h2>
+                <div class="applications">
+                    <div class="app-item">
+                        <h4>Medicine</h4>
+                        <p>Drug design, diagnostics, vaccine development, and understanding disease mechanisms.</p>
+                    </div>
+                    <div class="app-item">
+                        <h4>Environmental Science</h4>
+                        <p>Pollution control, water purification, climate change research, and sustainable practices.</p>
+                    </div>
+                    <div class="app-item">
+                        <h4>Materials Science</h4>
+                        <p>Creating polymers, nanomaterials, semiconductors, and advanced composites.</p>
+                    </div>
+                    <div class="app-item">
+                        <h4>Energy</h4>
+                        <p>Battery technology, solar cells, fuel cells, and biofuels development.</p>
+                    </div>
+                    <div class="app-item">
+                        <h4>Food Industry</h4>
+                        <p>Food preservation, flavor chemistry, nutrition science, and quality control.</p>
+                    </div>
+                    <div class="app-item">
+                        <h4>Forensics</h4>
+                        <p>Crime scene analysis, toxicology, DNA analysis, and trace evidence detection.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills You'll Develop Studying Chemistry</h2>
+                <ul style="margin: 15px 0 15px 40px; line-height: 2;">
+                    <li><strong>Problem-solving:</strong> Applying scientific principles to complex challenges</li>
+                    <li><strong>Analytical thinking:</strong> Interpreting data and experimental results</li>
+                    <li><strong>Laboratory techniques:</strong> Hands-on experience with scientific instruments</li>
+                    <li><strong>Mathematical proficiency:</strong> Using calculations in chemical contexts</li>
+                    <li><strong>Critical evaluation:</strong> Assessing scientific literature and claims</li>
+                    <li><strong>Communication:</strong> Presenting scientific findings clearly</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Career Paths in Chemistry</h2>
+                <p style="margin-bottom: 15px;">A chemistry degree opens doors to diverse careers:</p>
+                <ul style="margin: 15px 0 15px 40px; line-height: 1.8;">
+                    <li>Research Scientist (academic or industrial)</li>
+                    <li>Pharmaceutical Chemist</li>
+                    <li>Environmental Consultant</li>
+                    <li>Quality Control Analyst</li>
+                    <li>Chemical Engineer</li>
+                    <li>Forensic Scientist</li>
+                    <li>Patent Attorney (with additional law degree)</li>
+                    <li>Science Educator</li>
+                    <li>Regulatory Affairs Specialist</li>
+                    <li>Cosmetic Chemist</li>
+                </ul>
+            </section>
+        </div>
+
+            <footer>
+                <p>&copy; 2025 Chemistry 101 | Educational Resource for College Students</p>
+                <p>Made using Claude code</p>
+                <p>Contact: <a href="mailto:steve@shidcom.org" style="color: white;">steve@shidcom.org</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar collapse/expand (Desktop)
+        function toggleCollapse() {
+            const sidebar = document.getElementById('sidebar');
+            const mainWrapper = document.getElementById('mainWrapper');
+            const collapseBtn = document.getElementById('collapseBtn');
+
+            sidebar.classList.toggle('collapsed');
+            mainWrapper.classList.toggle('expanded');
+
+            // Change button icon
+            if (sidebar.classList.contains('collapsed')) {
+                collapseBtn.innerHTML = '▶';
+            } else {
+                collapseBtn.innerHTML = '◀';
+            }
+        }
+
+        // Toggle sidebar on mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Toggle collapsible sections
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const parent = event.currentTarget;
+
+            // Toggle the submenu
+            section.classList.toggle('show');
+
+            // Toggle the arrow rotation
+            parent.classList.toggle('expanded');
+        }
+
+        // Search functionality
+        function searchTopics() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const text = item.textContent || item.innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    item.style.display = '';
+                    item.parentElement.style.display = '';
+
+                    // Show parent sections if match found
+                    let parent = item.closest('.nav-submenu');
+                    while (parent) {
+                        parent.classList.add('show');
+                        const parentSection = parent.previousElementSibling;
+                        if (parentSection && parentSection.classList.contains('nav-section')) {
+                            parentSection.classList.add('expanded');
+                        }
+                        parent = parent.parentElement.closest('.nav-submenu');
+                    }
+                } else {
+                    if (filter !== '') {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+
+            // If search is cleared, reset everything
+            if (filter === '') {
+                navItems.forEach(item => {
+                    item.style.display = '';
+                });
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

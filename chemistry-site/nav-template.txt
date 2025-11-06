@@ -1,0 +1,178 @@
+<!-- This is the navigation template to be used across all pages -->
+
+CSS SECTION (Replace old nav CSS with this):
+===============================================
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .menu-toggle:hover {
+            background: #2a5298;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #1e3c72;
+            color: white;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #152a52;
+            border-bottom: 2px solid #2a5298;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+            color: white;
+        }
+
+        /* Search Box */
+        .search-box {
+            padding: 15px;
+            background: #152a52;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .search-box input:focus {
+            outline: 2px solid #667eea;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            border-bottom: 1px solid #2a5298;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: #2a5298;
+        }
+
+        .nav-item.active {
+            background: #667eea;
+            font-weight: bold;
+        }
+
+        /* Collapsible Sections */
+        .nav-section {
+            cursor: pointer;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .nav-section:hover {
+            background: #2a5298;
+        }
+
+        .nav-section .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-section.expanded .arrow {
+            transform: rotate(90deg);
+        }
+
+        .nav-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #152a52;
+        }
+
+        .nav-submenu.show {
+            max-height: 500px;
+        }
+
+        .nav-submenu li {
+            border-bottom: 1px solid #1e3c72;
+        }
+
+        .nav-submenu .nav-item {
+            padding-left: 40px;
+            font-size: 0.9em;
+        }
+
+        .nav-submenu .nav-submenu .nav-item {
+            padding-left: 60px;
+            font-size: 0.85em;
+        }
+
+        /* Main Content Area */
+        .main-wrapper {
+            margin-left: 280px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-wrapper {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }

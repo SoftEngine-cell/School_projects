@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17704841843"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17704841843');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9514124564034105"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Orbital Theory - College Chemistry Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2e5090 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .menu-toggle:hover {
+            background: #2e5090;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #1e3a5f;
+            color: white;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-280px);
+        }
+
+        .collapse-btn {
+            position: fixed;
+            left: 250px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 15px 8px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            z-index: 1001;
+            transition: left 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .collapse-btn:hover {
+            background: #2e5090;
+        }
+
+        .sidebar.collapsed + .collapse-btn {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #152a42;
+            border-bottom: 2px solid #2e5090;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+            color: white;
+        }
+
+        .search-box {
+            padding: 15px;
+            background: #152a42;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .search-box input:focus {
+            outline: 2px solid #667eea;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            border-bottom: 1px solid #2e5090;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: #2e5090;
+        }
+
+        .nav-item.active {
+            background: #667eea;
+            font-weight: bold;
+        }
+
+        .nav-section {
+            cursor: pointer;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .nav-section:hover {
+            background: #2e5090;
+        }
+
+        .nav-section .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-section.expanded .arrow {
+            transform: rotate(90deg);
+        }
+
+        .nav-submenu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #152a42;
+        }
+
+        .nav-submenu.show {
+            max-height: 500px;
+        }
+
+        .nav-submenu li {
+            border-bottom: 1px solid #1e3a5f;
+        }
+
+        .nav-submenu .nav-item {
+            padding-left: 40px;
+            font-size: 0.9em;
+        }
+
+        .nav-submenu .nav-submenu .nav-item {
+            padding-left: 60px;
+            font-size: 0.85em;
+        }
+
+        .main-wrapper {
+            margin-left: 280px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-wrapper.expanded {
+            margin-left: 0;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .collapse-btn {
+                display: none;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar.collapsed {
+                transform: translateX(-100%);
+            }
+
+            .main-wrapper {
+                margin-left: 0;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+
+        .intro {
+            background: #e8eaf6;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .intro h2 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #1e3a5f;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2e5090;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        h4 {
+            color: #3f51b5;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .key-points {
+            background: #fff3e0;
+            padding: 20px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .key-points ul {
+            list-style: none;
+        }
+
+        .key-points li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .principle-card h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .concept-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .concept-box strong {
+            color: #1e3a5f;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2d3436;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+        }
+
+        .mo-diagram {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .mo-diagram h3 {
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2e5090 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .example-box {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #9c27b0;
+        }
+
+        .example-box h4 {
+            color: #6a1b9a;
+            margin-top: 0;
+        }
+
+        .molecule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .molecule-card {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .molecule-card h4 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .formula-box {
+            background: #263238;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .applications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .app-card {
+            background: #fce4ec;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e91e63;
+        }
+
+        .app-card h4 {
+            color: #c2185b;
+            margin-top: 0;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .comparison-table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Chemistry Guide</h3>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search topics..." onkeyup="searchTopics()">
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="index.html" class="nav-item">🏠 What is Chemistry?</a>
+            </li>
+
+            <li>
+                <div class="nav-section expanded" onclick="toggleSection('inorganic')">
+                    <span>⚗️ Inorganic Chemistry</span>
+                    <span class="arrow">▶</span>
+                </div>
+                <ul class="nav-submenu show" id="inorganic">
+                    <li>
+                        <div class="nav-section expanded" onclick="toggleSection('coordination')">
+                            <span>Coordination Chemistry</span>
+                            <span class="arrow">▶</span>
+                        </div>
+                        <ul class="nav-submenu show" id="coordination">
+                            <li><a href="coordination-compounds.html" class="nav-item">📚 Coordination Compounds</a></li>
+                            <li>
+                                <div class="nav-section expanded" onclick="toggleSection('theories')">
+                                    <span>Bonding Theories</span>
+                                    <span class="arrow">▶</span>
+                                </div>
+                                <ul class="nav-submenu show" id="theories">
+                                    <li><a href="vbt-theory.html" class="nav-item">VBT - Valence Bond Theory</a></li>
+                                    <li><a href="cft-theory.html" class="nav-item">CFT - Crystal Field Theory</a></li>
+                                    <li><a href="mot-theory.html" class="nav-item active">MOT - Molecular Orbital Theory</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <button class="collapse-btn" id="collapseBtn" onclick="toggleCollapse()">◀</button>
+
+    <div class="main-wrapper" id="mainWrapper">
+        <div class="container">
+            <header>
+                <h1>Molecular Orbital Theory (MOT)</h1>
+                <p>Understanding Chemical Bonding Through Molecular Orbitals for College Students</p>
+            </header>
+
+            <div class="content">
+            <div class="intro">
+                <h2>What is Molecular Orbital Theory?</h2>
+                <p><strong>Molecular Orbital Theory (MOT)</strong> is a method for describing the electronic structure of molecules using quantum mechanics. Unlike Valence Bond Theory which treats bonds as localized between two atoms, MOT considers electrons as delocalized over the entire molecule in molecular orbitals formed by the combination of atomic orbitals.</p>
+            </div>
+
+            <section>
+                <h2>Historical Background</h2>
+                <p>Molecular Orbital Theory was developed in the early 20th century by scientists including Friedrich Hund, Robert Mulliken, and John Lennard-Jones. Robert Mulliken received the Nobel Prize in Chemistry in 1966 for his fundamental work on chemical bonds and the electronic structure of molecules using the molecular orbital method.</p>
+            </section>
+
+            <section>
+                <h2>Fundamental Concepts</h2>
+
+                <div class="concept-box">
+                    <h3>The Basic Premise</h3>
+                    <p>When atoms combine to form molecules, their atomic orbitals overlap and combine to form <strong>molecular orbitals (MOs)</strong>. These molecular orbitals belong to the molecule as a whole, not to individual atoms. Electrons in molecules occupy these molecular orbitals according to the same rules that govern atomic orbitals.</p>
+                </div>
+
+                <div class="key-points">
+                    <h3>Key Principles of MOT:</h3>
+                    <ul>
+                        <li>Atomic orbitals combine to form molecular orbitals</li>
+                        <li>Number of molecular orbitals formed = Number of atomic orbitals combined</li>
+                        <li>Electrons in molecules occupy molecular orbitals</li>
+                        <li>Molecular orbitals are filled according to Aufbau principle, Pauli exclusion principle, and Hund's rule</li>
+                        <li>Bonding MOs are lower in energy than atomic orbitals; antibonding MOs are higher</li>
+                        <li>Electrons are delocalized over the entire molecule</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Linear Combination of Atomic Orbitals (LCAO)</h2>
+                <p>Molecular orbitals are formed by the <strong>Linear Combination of Atomic Orbitals (LCAO)</strong>. When two atomic orbitals combine, they form two molecular orbitals:</p>
+
+                <div class="principle-grid">
+                    <div class="principle-card">
+                        <h3>Bonding Molecular Orbital</h3>
+                        <p><strong>Lower Energy - Constructive Interference</strong></p>
+                        <p>ψ<sub>bonding</sub> = ψ<sub>A</sub> + ψ<sub>B</sub></p>
+                        <p>Formed by in-phase combination (addition) of atomic orbitals</p>
+                        <p>Electron density increases between nuclei</p>
+                        <p>Stabilizes the molecule</p>
+                        <p>Denoted as σ, π, δ (depending on symmetry)</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <h3>Antibonding Molecular Orbital</h3>
+                        <p><strong>Higher Energy - Destructive Interference</strong></p>
+                        <p>ψ<sub>antibonding</sub> = ψ<sub>A</sub> - ψ<sub>B</sub></p>
+                        <p>Formed by out-of-phase combination (subtraction) of atomic orbitals</p>
+                        <p>Node between nuclei (zero electron density)</p>
+                        <p>Destabilizes the molecule</p>
+                        <p>Denoted as σ*, π*, δ* (with asterisk)</p>
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <p><strong>Important:</strong> For effective overlap and MO formation, atomic orbitals must have:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Similar energies</li>
+                        <li>Proper symmetry (same symmetry with respect to the molecular axis)</li>
+                        <li>Sufficient overlap</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Types of Molecular Orbitals</h2>
+
+                <h3>Based on Symmetry</h3>
+
+                <div class="molecule-grid">
+                    <div class="molecule-card">
+                        <h4>Sigma (σ) Orbitals</h4>
+                        <p><strong>Cylindrical symmetry</strong> around the internuclear axis</p>
+                        <p>Formed by head-on overlap</p>
+                        <p><strong>Examples:</strong></p>
+                        <p>• s + s → σ and σ*</p>
+                        <p>• s + p<sub>z</sub> → σ and σ*</p>
+                        <p>• p<sub>z</sub> + p<sub>z</sub> → σ and σ*</p>
+                        <p>Strongest type of covalent bond</p>
+                    </div>
+
+                    <div class="molecule-card">
+                        <h4>Pi (π) Orbitals</h4>
+                        <p><strong>Nodal plane</strong> containing the internuclear axis</p>
+                        <p>Formed by side-by-side overlap</p>
+                        <p><strong>Examples:</strong></p>
+                        <p>• p<sub>x</sub> + p<sub>x</sub> → π and π*</p>
+                        <p>• p<sub>y</sub> + p<sub>y</sub> → π and π*</p>
+                        <p>Weaker than σ bonds</p>
+                        <p>Present in double and triple bonds</p>
+                    </div>
+
+                    <div class="molecule-card">
+                        <h4>Delta (δ) Orbitals</h4>
+                        <p><strong>Two nodal planes</strong> containing the internuclear axis</p>
+                        <p>Formed by d-orbital overlap</p>
+                        <p><strong>Examples:</strong></p>
+                        <p>• d<sub>xy</sub> + d<sub>xy</sub> → δ and δ*</p>
+                        <p>• d<sub>x²-y²</sub> + d<sub>x²-y²</sub> → δ and δ*</p>
+                        <p>Found in metal-metal multiple bonds</p>
+                        <p>Weakest of the three types</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>MO Diagrams for Homonuclear Diatomic Molecules</h2>
+
+                <h3>Energy Order of Molecular Orbitals</h3>
+
+                <div class="concept-box">
+                    <h4>For O₂, F₂, Ne₂ (Z ≥ 8):</h4>
+                    <div class="formula-box">
+                        σ1s &lt; σ*1s &lt; σ2s &lt; σ*2s &lt; σ2p<sub>z</sub> &lt; π2p<sub>x</sub> = π2p<sub>y</sub> &lt; π*2p<sub>x</sub> = π*2p<sub>y</sub> &lt; σ*2p<sub>z</sub>
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <h4>For Li₂, Be₂, B₂, C₂, N₂ (Z &lt; 8):</h4>
+                    <div class="formula-box">
+                        σ1s &lt; σ*1s &lt; σ2s &lt; σ*2s &lt; π2p<sub>x</sub> = π2p<sub>y</sub> &lt; σ2p<sub>z</sub> &lt; π*2p<sub>x</sub> = π*2p<sub>y</sub> &lt; σ*2p<sub>z</sub>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Note:</strong> For these lighter molecules, π2p orbitals are lower in energy than σ2p<sub>z</sub> due to s-p mixing.</p>
+                </div>
+            </section>
+
+            <div class="mo-diagram">
+                <h3>General MO Energy Level Diagram</h3>
+                <p style="margin: 15px 0;">When two atoms approach each other:</p>
+                <p><strong>Atomic Orbital A</strong> + <strong>Atomic Orbital B</strong> → <strong>Bonding MO (lower energy)</strong> + <strong>Antibonding MO (higher energy)</strong></p>
+                <p style="margin-top: 15px; font-size: 0.95em; color: #555;">Electrons fill the lowest energy MOs first, following the same rules as atomic orbitals</p>
+            </div>
+
+            <section>
+                <h2>Bond Order and Stability</h2>
+
+                <div class="concept-box">
+                    <h3>Bond Order Formula</h3>
+                    <div class="formula-box">
+                        Bond Order = ½ [(Number of electrons in bonding MOs) - (Number of electrons in antibonding MOs)]
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Interpretation:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Bond Order = 0: No bond (molecule doesn't exist)</li>
+                        <li>Bond Order = 1: Single bond</li>
+                        <li>Bond Order = 2: Double bond</li>
+                        <li>Bond Order = 3: Triple bond</li>
+                        <li>Higher bond order = Stronger bond, shorter bond length</li>
+                        <li>Fractional bond orders are possible (e.g., 1.5, 2.5)</li>
+                    </ul>
+                </div>
+
+                <h3>Examples with Bond Order Calculations</h3>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Molecule</th>
+                        <th>Total Electrons</th>
+                        <th>Electronic Configuration</th>
+                        <th>Bond Order</th>
+                        <th>Magnetic Behavior</th>
+                    </tr>
+                    <tr>
+                        <td>H₂</td>
+                        <td>2</td>
+                        <td>σ1s²</td>
+                        <td>1</td>
+                        <td>Diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>He₂</td>
+                        <td>4</td>
+                        <td>σ1s² σ*1s²</td>
+                        <td>0 (unstable)</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Li₂</td>
+                        <td>6</td>
+                        <td>(σ1s² σ*1s²) σ2s²</td>
+                        <td>1</td>
+                        <td>Diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>B₂</td>
+                        <td>10</td>
+                        <td>(KK) σ2s² σ*2s² π2p²</td>
+                        <td>1</td>
+                        <td>Paramagnetic (2 unpaired)</td>
+                    </tr>
+                    <tr>
+                        <td>C₂</td>
+                        <td>12</td>
+                        <td>(KK) σ2s² σ*2s² π2p⁴</td>
+                        <td>2</td>
+                        <td>Diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>N₂</td>
+                        <td>14</td>
+                        <td>(KK) σ2s² σ*2s² π2p⁴ σ2p²</td>
+                        <td>3</td>
+                        <td>Diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>O₂</td>
+                        <td>16</td>
+                        <td>(KK) σ2s² σ*2s² σ2p² π2p⁴ π*2p²</td>
+                        <td>2</td>
+                        <td>Paramagnetic (2 unpaired)</td>
+                    </tr>
+                    <tr>
+                        <td>F₂</td>
+                        <td>18</td>
+                        <td>(KK) σ2s² σ*2s² σ2p² π2p⁴ π*2p⁴</td>
+                        <td>1</td>
+                        <td>Diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>Ne₂</td>
+                        <td>20</td>
+                        <td>(KK) σ2s² σ*2s² σ2p² π2p⁴ π*2p⁴ σ*2p²</td>
+                        <td>0 (unstable)</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 15px;"><em>Note: (KK) represents the filled K shell: σ1s² σ*1s²</em></p>
+            </section>
+
+            <div class="highlight-box">
+                "Molecular Orbital Theory's prediction that O₂ is paramagnetic was a triumph - VBT incorrectly predicted it would be diamagnetic!"
+            </div>
+
+            <section>
+                <h2>Heteronuclear Diatomic Molecules</h2>
+                <p>For molecules like CO, NO, HF, and HCl where the two atoms are different:</p>
+
+                <div class="key-points">
+                    <ul>
+                        <li>Atomic orbitals have different energies</li>
+                        <li>The more electronegative atom's orbitals are lower in energy</li>
+                        <li>Bonding MOs have more character of the lower-energy atomic orbital</li>
+                        <li>Antibonding MOs have more character of the higher-energy atomic orbital</li>
+                        <li>MOs are not symmetric (polar bonds)</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>Carbon Monoxide (CO)</h4>
+                    <p><strong>Electronic Configuration:</strong> (σ2s)² (σ*2s)² (π2p)⁴ (σ2p)²</p>
+                    <p><strong>Bond Order:</strong> 3 (triple bond)</p>
+                    <p><strong>Special Feature:</strong> Has a lone pair on carbon, making it a good ligand</p>
+                    <p>CO is isoelectronic with N₂</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Nitric Oxide (NO)</h4>
+                    <p><strong>Electronic Configuration:</strong> (σ2s)² (σ*2s)² (π2p)⁴ (σ2p)² (π*2p)¹</p>
+                    <p><strong>Bond Order:</strong> 2.5</p>
+                    <p><strong>Magnetic Behavior:</strong> Paramagnetic (1 unpaired electron)</p>
+                    <p>Readily loses the antibonding electron to form NO⁺ (bond order 3)</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Delocalized π Systems</h2>
+                <p>MOT excels at describing molecules with delocalized electrons, such as benzene, ozone, and conjugated systems:</p>
+
+                <div class="molecule-grid">
+                    <div class="molecule-card">
+                        <h4>Benzene (C₆H₆)</h4>
+                        <p>Six π electrons delocalized over six carbon atoms</p>
+                        <p>Three bonding π MOs (all filled)</p>
+                        <p>Three antibonding π* MOs (all empty)</p>
+                        <p>Extra stability (aromatic stabilization)</p>
+                    </div>
+
+                    <div class="molecule-card">
+                        <h4>Ozone (O₃)</h4>
+                        <p>π electrons delocalized over three oxygen atoms</p>
+                        <p>Bond order = 1.5 for each O-O bond</p>
+                        <p>Explains equivalent bond lengths</p>
+                        <p>Better description than resonance structures</p>
+                    </div>
+
+                    <div class="molecule-card">
+                        <h4>Conjugated Systems</h4>
+                        <p>Alternating single and double bonds</p>
+                        <p>π electrons delocalized over entire chain</p>
+                        <p>Explains UV-Vis absorption</p>
+                        <p>Important in dyes and pigments</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>MOT for Coordination Compounds</h2>
+                <p>Molecular Orbital Theory provides the most complete description of bonding in coordination complexes:</p>
+
+                <div class="key-points">
+                    <h3>Advantages over VBT and CFT:</h3>
+                    <ul>
+                        <li>Accounts for both σ and π bonding between metal and ligands</li>
+                        <li>Explains the spectrochemical series (why some ligands cause larger splitting)</li>
+                        <li>Describes metal-to-ligand and ligand-to-metal charge transfer</li>
+                        <li>Predicts magnetic properties more accurately</li>
+                        <li>Explains partially covalent character of metal-ligand bonds</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>σ-Donor Ligands</h4>
+                    <p>Donate electron density to metal through σ bonds (e.g., NH₃, H₂O, Cl⁻)</p>
+                    <p>Form bonding MOs from ligand lone pairs and metal d, s, and p orbitals</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>π-Acceptor Ligands (π acids)</h4>
+                    <p>Accept electron density from filled metal d orbitals into empty ligand π* orbitals</p>
+                    <p>Strong field ligands: CO, CN⁻, NO⁺</p>
+                    <p>Increase Δ (crystal field splitting) → low-spin complexes</p>
+                    <p>Back bonding strengthens metal-ligand bond</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>π-Donor Ligands</h4>
+                    <p>Donate electron density from filled ligand π orbitals to empty metal d orbitals</p>
+                    <p>Weak field ligands: I⁻, Br⁻, Cl⁻, OH⁻</p>
+                    <p>Decrease Δ → high-spin complexes</p>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                "MOT explains why CO is a strong-field ligand: π back-bonding from metal d orbitals to CO π* orbitals increases the crystal field splitting."
+            </div>
+
+            <section>
+                <h2>Comparison: MOT vs. VBT</h2>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Molecular Orbital Theory</th>
+                        <th>Valence Bond Theory</th>
+                    </tr>
+                    <tr>
+                        <td>Electron Location</td>
+                        <td>Delocalized over entire molecule</td>
+                        <td>Localized between two atoms</td>
+                    </tr>
+                    <tr>
+                        <td>Orbital Formation</td>
+                        <td>Atomic orbitals combine to form MOs</td>
+                        <td>Atomic orbitals overlap directly</td>
+                    </tr>
+                    <tr>
+                        <td>Magnetic Properties</td>
+                        <td>Correctly predicts paramagnetism of O₂, B₂</td>
+                        <td>Incorrectly predicts O₂ is diamagnetic</td>
+                    </tr>
+                    <tr>
+                        <td>Bond Order</td>
+                        <td>Can have fractional values (e.g., 1.5, 2.5)</td>
+                        <td>Always whole numbers (1, 2, 3)</td>
+                    </tr>
+                    <tr>
+                        <td>Resonance</td>
+                        <td>Not needed - delocalization is inherent</td>
+                        <td>Requires resonance structures</td>
+                    </tr>
+                    <tr>
+                        <td>Computational Ease</td>
+                        <td>More complex calculations</td>
+                        <td>Simpler, more intuitive</td>
+                    </tr>
+                    <tr>
+                        <td>Explaining Spectra</td>
+                        <td>Excellent for UV-Vis, photoelectron spectra</td>
+                        <td>Limited spectroscopic predictions</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>Delocalized systems, diatomic molecules, spectroscopy</td>
+                        <td>Simple molecules, qualitative descriptions</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Applications of Molecular Orbital Theory</h2>
+
+                <div class="applications-list">
+                    <div class="app-card">
+                        <h4>Spectroscopy</h4>
+                        <p>UV-Visible spectroscopy: Electronic transitions between MOs</p>
+                        <p>Photoelectron spectroscopy: Ionization energies reveal MO energies</p>
+                        <p>Predicting absorption wavelengths in conjugated systems</p>
+                    </div>
+
+                    <div class="app-card">
+                        <h4>Organic Chemistry</h4>
+                        <p>Explaining aromatic stability (benzene, naphthalene)</p>
+                        <p>Understanding conjugation and resonance</p>
+                        <p>Predicting reactivity in pericyclic reactions</p>
+                        <p>Frontier Molecular Orbital Theory (HOMO-LUMO)</p>
+                    </div>
+
+                    <div class="app-card">
+                        <h4>Inorganic Chemistry</h4>
+                        <p>Metal-ligand bonding in coordination complexes</p>
+                        <p>Understanding the spectrochemical series</p>
+                        <p>Metal-metal multiple bonds</p>
+                        <p>Organometallic compound bonding</p>
+                    </div>
+
+                    <div class="app-card">
+                        <h4>Materials Science</h4>
+                        <p>Band theory of solids (extension of MOT)</p>
+                        <p>Conductors, semiconductors, and insulators</p>
+                        <p>Optical properties of materials</p>
+                        <p>Molecular electronics</p>
+                    </div>
+
+                    <div class="app-card">
+                        <h4>Biochemistry</h4>
+                        <p>Heme proteins (hemoglobin, myoglobin, cytochromes)</p>
+                        <p>Photosynthetic pigments (chlorophyll)</p>
+                        <p>DNA base stacking interactions</p>
+                        <p>Enzyme catalysis mechanisms</p>
+                    </div>
+
+                    <div class="app-card">
+                        <h4>Computational Chemistry</h4>
+                        <p>Basis for computational methods (Hartree-Fock, DFT)</p>
+                        <p>Drug design and molecular modeling</p>
+                        <p>Predicting molecular properties</p>
+                        <p>Reaction mechanism studies</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Important Concepts and Rules</h2>
+
+                <div class="example-box">
+                    <h4>Aufbau Principle</h4>
+                    <p>Molecular orbitals are filled in order of increasing energy, starting with the lowest energy MO.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Pauli Exclusion Principle</h4>
+                    <p>Each molecular orbital can hold a maximum of two electrons with opposite spins.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Hund's Rule</h4>
+                    <p>When filling degenerate (equal energy) molecular orbitals, electrons occupy them singly with parallel spins before pairing.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>HOMO and LUMO</h4>
+                    <p><strong>HOMO:</strong> Highest Occupied Molecular Orbital</p>
+                    <p><strong>LUMO:</strong> Lowest Unoccupied Molecular Orbital</p>
+                    <p>The HOMO-LUMO gap determines many molecular properties including reactivity and color.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Study Tips for MOT</h2>
+
+                <div class="key-points">
+                    <ul>
+                        <li>Master drawing MO diagrams for homonuclear diatomic molecules</li>
+                        <li>Memorize the MO energy ordering for atoms with Z &lt; 8 and Z ≥ 8</li>
+                        <li>Practice calculating bond orders and predicting magnetic behavior</li>
+                        <li>Understand the difference between σ, π, and δ orbitals</li>
+                        <li>Know why MOT correctly predicts O₂ paramagnetism while VBT fails</li>
+                        <li>Understand the relationship between bond order, bond length, and bond strength</li>
+                        <li>Be able to compare and contrast MOT with VBT</li>
+                        <li>Learn the concepts of π-donor and π-acceptor ligands for coordination chemistry</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Related Topics to Explore</h2>
+
+                <ul style="margin: 15px 0 15px 40px; line-height: 2;">
+                    <li><strong>Valence Bond Theory:</strong> Alternative bonding theory emphasizing orbital overlap</li>
+                    <li><strong>Crystal Field Theory:</strong> Electrostatic model for coordination compounds</li>
+                    <li><strong>Ligand Field Theory:</strong> Combination of MOT and CFT</li>
+                    <li><strong>Group Theory:</strong> Symmetry and molecular orbital analysis</li>
+                    <li><strong>Computational Chemistry:</strong> Calculating molecular orbitals with software</li>
+                    <li><strong>Band Theory:</strong> Extension of MOT to infinite solids</li>
+                    <li><strong>Frontier Orbital Theory:</strong> HOMO-LUMO interactions in reactions</li>
+                    <li><strong>Photoelectron Spectroscopy:</strong> Experimental determination of MO energies</li>
+                </ul>
+            </section>
+        </div>
+
+            <footer>
+                <p>&copy; 2025 Chemistry 101 | Educational Resource for College Students</p>
+                <p>Made using Claude code</p>
+                <p>Contact: <a href="mailto:steve@shidcom.org" style="color: white;">steve@shidcom.org</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function toggleCollapse() {
+            const sidebar = document.getElementById('sidebar');
+            const mainWrapper = document.getElementById('mainWrapper');
+            const collapseBtn = document.getElementById('collapseBtn');
+
+            sidebar.classList.toggle('collapsed');
+            mainWrapper.classList.toggle('expanded');
+
+            if (sidebar.classList.contains('collapsed')) {
+                collapseBtn.innerHTML = '▶';
+            } else {
+                collapseBtn.innerHTML = '◀';
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const parent = event.currentTarget;
+            section.classList.toggle('show');
+            parent.classList.toggle('expanded');
+        }
+
+        function searchTopics() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const text = item.textContent || item.innerText;
+                if (text.toLowerCase().indexOf(filter) > -1) {
+                    item.style.display = '';
+                    item.parentElement.style.display = '';
+                    let parent = item.closest('.nav-submenu');
+                    while (parent) {
+                        parent.classList.add('show');
+                        const parentSection = parent.previousElementSibling;
+                        if (parentSection && parentSection.classList.contains('nav-section')) {
+                            parentSection.classList.add('expanded');
+                        }
+                        parent = parent.parentElement.closest('.nav-submenu');
+                    }
+                } else {
+                    if (filter !== '') {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+
+            if (filter === '') {
+                navItems.forEach(item => {
+                    item.style.display = '';
+                });
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
